@@ -42,7 +42,7 @@ fun HomeScreen(listOfKeys: List<String>, onDetailItemClick: (String) -> Unit) {
         )
 
         LazyVerticalGrid(columns = GridCells.Adaptive(150.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 16.dp),
             content = {
@@ -55,8 +55,8 @@ fun HomeScreen(listOfKeys: List<String>, onDetailItemClick: (String) -> Unit) {
                             },
                     ) {
                         Text(
-                            text = "${stringResource(id = R.string.shan_proverb)} - ${it}",
-                            modifier = Modifier.padding(16.dp)
+                            text = "${stringResource(id = R.string.shan_proverb)} - $it",
+                            modifier = Modifier.padding(vertical = 32.dp, horizontal = 16.dp)
                         )
                     }
                 }
