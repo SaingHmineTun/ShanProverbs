@@ -26,7 +26,6 @@ data class Proverb(
 data object Jsons {
     private var jsonData: AllProverbs? = null
     fun getJsonData(context: Context): AllProverbs {
-
         if (jsonData == null) {
             val inputStream = context.resources.openRawResource(R.raw.shan_proverbs)
             val reader = BufferedReader(InputStreamReader(inputStream))
