@@ -115,7 +115,7 @@ fun RandomProverb(onInterval: () -> String) {
         withContext(Dispatchers.Default) {
             while (isPlaying) {
                 randomProverb = onInterval()
-                delay(5000) // Wait for 1 second (1000 milliseconds)
+                delay(10_000) // Wait for 1 second (1000 milliseconds)
             }
         }
     }
