@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -81,7 +82,7 @@ fun HomeScreen(
                             .clickable {
                                 onDetailItemClick.invoke(it)
                             },
-                        shape = CutCornerShape(16.dp)
+                        shape = RoundedCornerShape(8.dp)
                     ) {
                         Text(
                             text = "${stringResource(id = R.string.shan_proverb)} - $it",
@@ -107,7 +108,7 @@ fun RandomProverb(onInterval: () -> String) {
     }
 
     val backgroundColor by animateColorAsState(
-        targetValue = if (isPlaying) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.primary,
+        targetValue = if (isPlaying) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.tertiaryContainer,
         label = "Random Proverb Background Color"
     )
 
@@ -121,7 +122,7 @@ fun RandomProverb(onInterval: () -> String) {
     }
     Text(
         text = randomProverb,
-        color = if (isPlaying) MaterialTheme.colorScheme.onSecondary else MaterialTheme.colorScheme.onPrimary,
+        color = if (isPlaying) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onTertiaryContainer,
         style = Typography.titleSmall,
         modifier = Modifier
             .fillMaxWidth()

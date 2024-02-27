@@ -1,12 +1,7 @@
 package it.saimao.shanproverbs.ui.theme.screens
 
 import android.app.Application
-import android.util.Log
 import android.widget.Toast
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -17,18 +12,15 @@ import it.saimao.shanproverbs.ShanProverbApplication
 import it.saimao.shanproverbs.data.AllProverbs
 import it.saimao.shanproverbs.data.Jsons
 import it.saimao.shanproverbs.data.Proverb
-import it.saimao.shanproverbs.shan_tools.ShanWordSortingProverb
+import it.saimao.shanproverbs.shan_tools.ShanWordSorting
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -37,7 +29,7 @@ import kotlinx.coroutines.withContext
 class ShanProverbViewModel(private val application: Application) : ViewModel() {
 
     private val allProverbs: AllProverbs = Jsons.getJsonData(application.applicationContext)
-    private val shanWordSorting: ShanWordSortingProverb = ShanWordSortingProverb()
+    private val shanWordSorting: ShanWordSorting<Proverb> = ShanWordSorting()
     val allProverbKeys: List<String> = allProverbs.allProverbs.map { it.key }
 
     private var _searchText = MutableStateFlow("")

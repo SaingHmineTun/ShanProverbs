@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class ShanWordSorting implements Comparator<String> {
+public class ShanWordSorting<T> implements Comparator<T> {
 
     // 1 to 19 -> C
     static String[] consonants = {
@@ -246,18 +246,16 @@ public class ShanWordSorting implements Comparator<String> {
 
     public static int compareValue(int v1, int v2) {
         if (v1 >= 0 && v2 >= 0) {
-            if (v1 > v2) return 1;
-            else if (v2 > v1) return -1;
-            else return 0;
+            return Integer.compare(v1, v2);
         } else if (v1 < 0 && v2 >= 0) {
             return 1;
-        } else if (v2 < 0 && v1 >= 0) {
+        } else if (v1 >= 0) {
             return -1;
         } else return 0;
     }
 
     @Override
-    public int compare(String o1, String o2) {
-        return compareWordInt(o1, o2);
+    public int compare(T o1, T o2) {
+        return compareWordInt(o1.toString(), o2.toString());
     }
 }
