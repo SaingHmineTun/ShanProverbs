@@ -140,6 +140,6 @@ fun RandomProverb(onInterval: () -> String) {
 fun HomeScreenPreview() {
     HomeScreen(
         viewModel = viewModel(),
-        Jsons.getJsonData(LocalContext.current).allProverbs.map { it.key }
+        Jsons.getJsonData(LocalContext.current).all_proverbs.map { it.proverb_key }
     ) {}
 }

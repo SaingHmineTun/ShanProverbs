@@ -30,7 +30,7 @@ class ShanProverbViewModel(private val application: Application) : ViewModel() {
 
     private val allProverbs: AllProverbs = Jsons.getJsonData(application.applicationContext)
     private val shanWordSorting: ShanWordSorting<Proverb> = ShanWordSorting()
-    val allProverbKeys: List<String> = allProverbs.allProverbs.map { it.key }
+    val allProverbKeys: List<String> = allProverbs.all_proverbs.map { it.proverb_key }
 
     private var _searchText = MutableStateFlow("")
     val searchText = _searchText.asStateFlow()
@@ -63,7 +63,7 @@ class ShanProverbViewModel(private val application: Application) : ViewModel() {
                 }
                 _detailStateFlow
                     .update {
-                        allProverbs.allProverbs.first { it.key == proverbKey }.proverbs.sortedWith(
+                        allProverbs.all_proverbs.first { it.proverb_key == proverbKey }.proverb_list.sortedWith(
                             shanWordSorting
                         )
                     }
@@ -86,7 +86,7 @@ class ShanProverbViewModel(private val application: Application) : ViewModel() {
     }
 
     fun getRandomProverb(): String {
-        return allProverbs.allProverbs.random().proverbs.random().proverb
+        return allProverbs.all_proverbs.random().proverb_list.random().proverb
     }
 
     companion object {

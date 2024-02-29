@@ -7,12 +7,12 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 
 data class AllProverbs(
-    val allProverbs: List<Proverbs>
+    val all_proverbs: List<Proverbs>
 )
 
 data class Proverbs(
-    val key: String,
-    val proverbs: List<Proverb>
+    val proverb_key: String,
+    val proverb_list: List<Proverb>
 )
 
 data class Proverb(

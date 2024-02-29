@@ -154,6 +154,6 @@ fun DetailScreen(
 @Preview(showSystemUi = true)
 @Composable
 fun DetailScreenPreview() {
-    val proverbs = Jsons.getJsonData(LocalContext.current).allProverbs[0]
-    DetailScreen(proverbKey = proverbs.key, viewModel = viewModel(), navigateBack = {})
+    val proverbs = Jsons.getJsonData(LocalContext.current).all_proverbs[0]
+    DetailScreen(proverbKey = proverbs.proverb_key, viewModel = viewModel(), navigateBack = {})
 }
