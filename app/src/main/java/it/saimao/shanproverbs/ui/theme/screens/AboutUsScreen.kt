@@ -50,13 +50,13 @@ fun ContactUsList(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     Column(modifier) {
         ListItem(R.drawable.ic_gmail, "Email", "tmk.muse@gmail.com") {
+            val to = "tmk.muse@gmail.com"
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
+            intent.setType("message/rfc822")
+            startActivity(context, Intent.createChooser(intent, "Choose an Email client :"), null)
 
-            val intent = try {
-                Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/100377671433172"))
-            } catch (e: Exception) {
-                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/100377671433172"))
-            }
-            startActivity(context, intent, null)
+
         }
         Spacer(
             modifier = Modifier
@@ -66,12 +66,14 @@ fun ContactUsList(modifier: Modifier = Modifier) {
 
         ListItem(R.drawable.ic_facebook, "Facebook", "ထုင်ႉမၢဝ်းၶမ်း") {
 
-            val to = "tmk.muse@gmail.com"
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
-            intent.setType("message/rfc822")
-            startActivity(context, Intent.createChooser(intent, "Choose an Email client :"), null)
-        }
+            val intent = try {
+                Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/100377671433172"))
+            } catch (e: Exception) {
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/100377671433172"))
+            }
+            startActivity(context, intent, null)
+
+            }
         Spacer(
             modifier = Modifier
                 .height(8.dp)
